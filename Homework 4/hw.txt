@@ -1,14 +1,44 @@
 
 Problem 2
 The call to Set<Coord>::insert would not compile because the insert function calls the function findFirstAtLeast, which walks through the list 
-and compares the new item to the list until it finds the first item that is not smaller than the new item. Since we don't define the comparison operator '<'
-for the Coord class, compiler does not know how to compare the new item with the items from the list. 
+and compares the new item to the list until it finds the first item that is not smaller than the new item. Since we don't define the comparison operator '<' for the Coord class, compiler does not know how to compare the new item with the items from the list. 
+The "==" / "!=" operator are also not defined for Coord class, this would also cause a compilation error. 
 
 
 Problem 3b
 If I don't have path as a parameter, each level of the tree will have no clue of what their parent branches look like. 
 In this case, it might be possible to correctly print out the path of only the leaf nodes (e.g, write out only the third line instead of line 1, 2, and 3), 
 because I can recursively print elements until the current element does not have any children, and then I can start a new line. 
-But in this problem where I have to print the path of every single node in a new line, I have no method to tell a node what its parent path look like, 
-unless I pass this information to it as a parameter. 
+But in this problem where I have to print the path of every single node in a new line, I have no method to tell a node what its parent path look like, unless I pass this information to it as a parameter. 
+
+
+Problem 4a
+The time complexity of this algorithm is O(N^3). The algorithm has a nested loop with three layers(i, j, k), and for each layer the loop will fully run roughly N times. Therefore the highest order of time complexity is N*N*N = N^3.
+
+Problem 4b
+The time complexity of this algorithm is still O(N^3). If the terminating condition is changed to (j < i) rather than the (j < N) in part a), the first and second layer of loop altogether (the ones with variable i and j) will execute 1 + 2 +...+ n-1 times. By math, this number is still order N^2. When we multiply this number with the complexity of the innermost loop (O(N)), we still get O(N^3). 
+
+
+Problem 5a
+The time complexity for unite is O(N^2).
+The worst case for this problem would be the case where set1 and set2 contain N entirely different elements (i.e., no element in set1 appears in set2), and all of the elements in set2 are greater than elements in set1.
+In the function unite(), the loop with variable k would execute N times; the first line of the loop's body (creating a new ItemType item) is O(1); for the second line (get), we can calculate the average steps needed to get every element from a set, (1+2+...+N/2+...+2+1)/N, which is roughly O(N); for the third line (insert), the call to the findFirstAtLeast() function is O(N) in the worst case, and insertBefore() is O(1), so the time complexity for insert() in the third line is O(N). To obtain the time complexity for the whole loop we need to add the complexity for three line of the loop body and multiply this result with N. Therefore the time complexity for the loop with variable k is O(N^2) in worst case, and thus the time complexity for the whole unite function is O(N^2) for the worst case. 
+
+Problem 5b
+This algorithm's time complexity is O(NlogN). 
+The time complexity of copying all items into v is O(N). The time complexity of sorting is O(NlogN). The time complexity of deleting all nodes in result is O(N). The time complexity of copying unique items from v into result is O(N), since the function insertBefore has a time complexity O(1). Overall, the complexity of this algorithm is O(N + NlogN + N + N) = O(3N + NlogN). As NlogN has a higher order than 3N, we can omit the term 3N and get the final time complexity 
+O(NlogN). 
+
+Problem 5c
+
+
+
+
+
+
+
+
+
+
+
 
