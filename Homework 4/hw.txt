@@ -1,0 +1,14 @@
+
+Problem 2
+The call to Set<Coord>::insert would not compile because the insert function calls the function findFirstAtLeast, which walks through the list 
+and compares the new item to the list until it finds the first item that is not smaller than the new item. Since we don't define the comparison operator '<'
+for the Coord class, compiler does not know how to compare the new item with the items from the list. 
+
+
+Problem 3b
+If I don't have path as a parameter, each level of the tree will have no clue of what their parent branches look like. 
+In this case, it might be possible to correctly print out the path of only the leaf nodes (e.g, write out only the third line instead of line 1, 2, and 3), 
+because I can recursively print elements until the current element does not have any children, and then I can start a new line. 
+But in this problem where I have to print the path of every single node in a new line, I have no method to tell a node what its parent path look like, 
+unless I pass this information to it as a parameter. 
+
