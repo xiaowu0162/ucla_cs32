@@ -30,6 +30,8 @@ The time complexity of copying all items into v is O(N). The time complexity of 
 O(NlogN). 
 
 Problem 5c
+This function's time complexity is O(N). 
+The code segments before the while loop have a time complexity O(1). The while loop has a time complexity of O(N), since this loop will advance p1 or p2 roughly N times, and the time complexity of insertBefore is O(1). The for loop in the worst/average case will have a time complexity O(N). Therefore, the time complexity for the whole algorithm is O(1 + N + N), which is just O(N). 
 
 
 
